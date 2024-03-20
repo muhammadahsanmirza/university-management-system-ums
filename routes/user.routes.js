@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 });
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-
+clear
     if (!isValidObjectId(id)) {
         return res.status(400).send({ error: 'Invalid user ID format.' });
     }

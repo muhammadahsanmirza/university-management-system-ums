@@ -16,7 +16,6 @@ router.get('/', async (req, res) => {
 });
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
-clear
     if (!isValidObjectId(id)) {
         return res.status(400).send({ error: 'Invalid user ID format.' });
     }
@@ -70,7 +69,7 @@ router.put('/:id', async (req, res) => {
 
     try {
         const id = req.params.id;
-        const {name, email } = req.body;
+        const { name, email } = req.body;
 
         if (!email || !name) {
             throw new Error("Please provide an email and a name.");
@@ -92,8 +91,8 @@ router.put('/:id', async (req, res) => {
     }
 });
 router.delete('/:id', async (req, res) => {
-    if(!isValidObjectId(req.params.id)){
-        return res.status(400).send({error: 'Invalid user ID format.'});
+    if (!isValidObjectId(req.params.id)) {
+        return res.status(400).send({ error: 'Invalid user ID format.' });
     }
     try {
         const user = await User.findByIdAndDelete(req.params.id);
@@ -101,8 +100,8 @@ router.delete('/:id', async (req, res) => {
             return res.status(404).send({ error: 'User not found.' });
         }
         res.status(200).send({ message: 'User deleted successfully.' });
-    } catch (error) { 
-        res.status(500).send({error: error.message || 'Error Deleting User'});
+    } catch (error) {
+        res.status(500).send({ error: error.message || 'Error Deleting User' });
     }
 });
 

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const {isEmail, isBoolean} = require("validator");
+const {isEmail} = require("validator");
 const Program = require('./programs.model');
 
-const opportunitiesSchema = new mongoose.Schema({
+const opportunitySchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please enter opportunity name'],
@@ -70,5 +70,5 @@ const opportunitiesSchema = new mongoose.Schema({
 
 
 
-const Opportunities = mongoose.model('Opportunities',opportunitiesSchema);
-module.exports = Opportunities;
+const Opportunity = mongoose.model('Opportunity',opportunitySchema);
+module.exports = Opportunity;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Opportunity = require('./opportunities.model');
-const User = require('./Users.model');
+const User = require('./models/users.model');
 
 const opportunityApplicantsSchema = new mongoose.Schema({
     opportunityId: {

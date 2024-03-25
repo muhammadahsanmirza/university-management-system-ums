@@ -4,26 +4,13 @@ const Program = require('../models/programs.model');
 const College = require('../models/colleges.model');
 const router = express.Router();
 
-router.post('/', async (req, res) => {
-    if(!req.body.programId) return res.status(400).send('Program Id is required');
-    try {
-        const opportunity = new Opportunity(req.body);
-        await opportunity.save();
-        return res.status(201).send(opportunity);
-    } catch (error) {
-        return res.status(500).send({'error':error.message || 'Error in creating opportunity'});
-    }
-});
+const {
+    handlePostOpportunity,
+    handleFindOpportunitiesByProgramId
+} = require('../controllers/opportunities.controller');
 
-router.get('/program/:programId', async (req, res) => {
-    const { programId } = req.params;
-    try {
-        const opportunity = await Opportunity.find({ programId }).populate({ path: 'collegeId', options: { strictPopulate: false }});
+router.post('/', handlePostOpportunity);
 
-        return res.status(200).send(opportunity);
-    } catch (error) {
-        return res.status(500).send({ error: error.message || 'Error in getting opportunities' });
-    }
-});
+router.get('/program/:programId', handleFindOpportunitiesByProgramId);
 
 module.exports = router;

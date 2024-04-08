@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './App.css'
-import { Tooltip, Toast, Popover } from 'bootstrap';
-
+import './Form.jsx'
 function App() {
 
   return (
